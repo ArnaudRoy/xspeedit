@@ -8,4 +8,5 @@ public interface EmballageService {
 	void emballer(Article[] chaineDArticle);
 
 	Carton[] getCartonsALivrer();
+
 }
