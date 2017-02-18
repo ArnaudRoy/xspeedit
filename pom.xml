@@ -1,0 +1,27 @@
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>fr.aroy.xspeedit</groupId>
+	<artifactId>xspeedit</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Xspeedit - projet test - voyages-sncf.com</name>
+	<description>XspeedIt est une société d'import / export ayant robotisé toute sa chaîne d'emballage de colis</description>
+
+	<developers>
+		<developer>
+			<name>Arnaud Roy</name>
+			<roles>
+				<role>leaddev</role>
+			</roles>
+		</developer>
+	</developers>
+
+	<properties>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+</project>
