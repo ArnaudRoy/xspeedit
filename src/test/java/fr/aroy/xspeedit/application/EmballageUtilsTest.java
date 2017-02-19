@@ -1,12 +1,12 @@
 package fr.aroy.xspeedit.application;
 
-import static org.junit.Assert.*;
-import static org.hamcrest.Matchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.arrayContaining;
+import static org.hamcrest.Matchers.arrayWithSize;
+import static org.hamcrest.Matchers.equalTo;
 
 import org.junit.Test;
 
-import fr.aroy.xspeedit.application.EmballageUtils;
 import fr.aroy.xspeedit.domain.Article;
 import fr.aroy.xspeedit.domain.Carton;
 

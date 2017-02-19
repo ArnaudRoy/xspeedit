@@ -1,8 +1,7 @@
 package fr.aroy.xspeedit.infrastructure;
 
-import static org.junit.Assert.*;
-import static org.hamcrest.Matchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 
 import org.junit.Test;
 
