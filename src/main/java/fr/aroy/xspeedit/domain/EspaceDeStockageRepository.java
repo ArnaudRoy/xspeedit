@@ -7,7 +7,15 @@ package fr.aroy.xspeedit.domain;
  */
 public interface EspaceDeStockageRepository {
 
-	EspaceDeStockage getEspaceDeStockage();
+	/**
+	 * Recupere l'espace de stockage
+	 * @return EspaceDeStockage
+	 */
+	EspaceDeStockage loadEspaceDeStockage();
 	
-	void setEspaceDeStockage(EspaceDeStockage espaceDeStockage);
+	/**
+	 * Enregistrer l'espace de stockage
+	 * @param espaceDeStockage
+	 */
+	void saveEspaceDeStockage(EspaceDeStockage espaceDeStockage);
 }
