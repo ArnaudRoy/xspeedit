@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>fr.aroy.xspeedit</groupId>
 	<artifactId>xspeedit</artifactId>
-	<version>1.0.0</version>
+	<version>1.1.0</version>
 	<name>Xspeedit - projet test - voyages-sncf.com</name>
 	<description>XspeedIt est une société d'import / export ayant robotisé toute sa chaîne d'emballage de colis</description>
 
