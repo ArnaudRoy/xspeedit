@@ -17,18 +17,14 @@ public class EmballageUtils {
 	 */
 	public static Article[] transformChaineDeChiffresEnChaineDArticles(String chaineDeChiffres) {
 
-		List<Article> chaineDArticles = new ArrayList<>(chaineDeChiffres.length());
-
-		chaineDeChiffres.chars()
+		Stream<Article> articlesStream= chaineDeChiffres.chars()
 				.mapToObj(tailleArticle -> (char) tailleArticle)
 				.map(String::valueOf)
 				.filter(tailleArticle -> tailleArticle.matches("[1-9]+"))
 				.map(Integer::valueOf)
-				.forEach(tailleArticle->{
-					chaineDArticles.add(new Article(tailleArticle));
-				});
+				.map(Article::new);
 
-		return chaineDArticles.toArray(new Article[chaineDArticles.size()]);
+		return articlesStream.toArray(size -> new Article[size]);
 	}
 	/**
 	 * Transforme une Chaine de carton en Chaine de chiffres séparés par des "/"
