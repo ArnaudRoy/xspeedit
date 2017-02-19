@@ -10,16 +10,17 @@ import fr.aroy.xspeedit.domain.EspaceDeStockageRepository;
  */
 public class InMemoryEspaceDeStockageRepository implements EspaceDeStockageRepository {
 
-	private static EspaceDeStockage espaceDeStockage;
+	/** l'esapce de stockage enregistré en static */
+	private EspaceDeStockage espaceDeStockage;
 	
 	@Override
-	public EspaceDeStockage getEspaceDeStockage() {
-		return InMemoryEspaceDeStockageRepository.espaceDeStockage;
+	public EspaceDeStockage loadEspaceDeStockage() {
+		return this.espaceDeStockage;
 	}
 	
 	@Override
-	public void setEspaceDeStockage(EspaceDeStockage espaceDeStockage) {
-		InMemoryEspaceDeStockageRepository.espaceDeStockage = espaceDeStockage;
+	public void saveEspaceDeStockage(EspaceDeStockage espaceDeStockage) {
+		this.espaceDeStockage = espaceDeStockage;
 	}
 
 }

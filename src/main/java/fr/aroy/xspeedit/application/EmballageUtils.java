@@ -7,6 +7,11 @@ import java.util.stream.Stream;
 import fr.aroy.xspeedit.domain.Article;
 import fr.aroy.xspeedit.domain.Carton;
 
+/**
+ * Utilitaire pour l'emballage
+ * @author royar
+ *
+ */
 public class EmballageUtils {
 
 	/**
@@ -26,7 +31,7 @@ public class EmballageUtils {
 		return articlesStream.toArray(size -> new Article[size]);
 	}
 	/**
-	 * Transforme une Chaine de carton en Chaine de chiffres séparés par des "/"
+	 * Transforme une chaine de cartons en chaine de chiffres séparés par des "/"
 	 * @param chaineDeCartons
 	 * @return une chaine de cartons sous forme d'un string
 	 */

@@ -8,45 +8,50 @@ import fr.aroy.xspeedit.domain.EspaceDeStockage;
 import fr.aroy.xspeedit.domain.EspaceDeStockageRepository;
 
 /**
- * Implémentation basique du service d'emballage
- * Prend les articles les uns après les autres, et les mets dans un carton.
- * Si la taille totale dépasse la contenance du carton, le robot met l'article dans le carton suivant.
+ * Implémentation optimisée du service d'emballage
+ * Prend les articles les uns après les autres, et verifie chaque carton pour trouver un carton avec de la place.
+ * Si aucun carton n'a la capacité suffisante, le robot met l'article dans un nouveau carton.
  * @author royar
  *
  */
-public class BasiqueEmballageService implements EmballageService {
+public class OptimiseEmballageService implements EmballageService {
 	
 	/** Repo de l'espace de stockage */
 	EspaceDeStockageRepository espaceDeStockageRepository; 
 
 	/** Constructeur */
-	public BasiqueEmballageService() {
+	public OptimiseEmballageService() {
 	}
 	
 	/** Constructeur avec le repo */
-	public BasiqueEmballageService(EspaceDeStockageRepository espaceDeStockageRepository) {
+	public OptimiseEmballageService(EspaceDeStockageRepository espaceDeStockageRepository) {
 		this.espaceDeStockageRepository = espaceDeStockageRepository;
 	}
 	
+
 	@Override
 	public void emballer(Article[] chaineDArticles) {
 		EspaceDeStockage espaceDeStockage = espaceDeStockageRepository.loadEspaceDeStockage();
 		
-		Carton carton;
-		
 		List<Carton> chaineDeCartons = espaceDeStockage.getChaineDeCartons();
-		if (chaineDeCartons.size() > 0) {
-			carton = chaineDeCartons.get(chaineDeCartons.size() - 1);
-		} else {
-			carton = new Carton();
-			chaineDeCartons.add(carton);
+		if (chaineDeCartons.size() == 0) {
+			chaineDeCartons.add(new Carton());
 		}
+		
 		for (Article article : chaineDArticles) {
-			if (carton.getCapaciteRestante() < article.taille) {
-				carton = new Carton();
-				chaineDeCartons.add(carton);
+			boolean isArticleEmballe = false;
+			for (Carton carton : chaineDeCartons) {
+				if (carton.getCapaciteRestante() >= article.taille) {
+					carton.addArticle(article);
+					isArticleEmballe = true;
+					break;
+				}
 			}
-			carton.addArticle(article);
+			if (!isArticleEmballe) {
+				Carton carton = new Carton();
+				chaineDeCartons.add(carton);
+				carton.addArticle(article);
+			}
 		}
 	}
 

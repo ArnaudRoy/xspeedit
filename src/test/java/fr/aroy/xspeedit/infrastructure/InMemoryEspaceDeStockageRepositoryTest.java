@@ -1,8 +1,7 @@
 package fr.aroy.xspeedit.infrastructure;
 
-import static org.junit.Assert.*;
-import static org.hamcrest.Matchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 
 import org.junit.Test;
 
@@ -17,9 +16,9 @@ public class InMemoryEspaceDeStockageRepositoryTest {
 		
 		EspaceDeStockage espaceDeStockage = new EspaceDeStockage();
 		
-		stockageRepository.setEspaceDeStockage(espaceDeStockage);
+		stockageRepository.saveEspaceDeStockage(espaceDeStockage);
 		
-		EspaceDeStockage espaceDeStockageFromRepository = stockageRepository.getEspaceDeStockage();
+		EspaceDeStockage espaceDeStockageFromRepository = stockageRepository.loadEspaceDeStockage();
 		
 		assertThat(espaceDeStockage, equalTo(espaceDeStockageFromRepository));
 		
