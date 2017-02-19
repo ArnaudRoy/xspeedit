@@ -16,7 +16,7 @@ import fr.aroy.xspeedit.domain.EspaceDeStockage;
 import fr.aroy.xspeedit.domain.EspaceDeStockageRepository;
 import fr.aroy.xspeedit.infrastructure.InMemoryEspaceDeStockageRepository;
 
-public class EmballageServiceTest {
+public class BasiqueEmballageServiceTest {
 
 	EspaceDeStockageRepository espaceDeStockageRepository = new InMemoryEspaceDeStockageRepository(); 
 	
