@@ -18,14 +18,16 @@ import fr.aroy.xspeedit.infrastructure.InMemoryEspaceDeStockageRepository;
 
 public class OptimiseEmballageServiceTest {
 
-	EspaceDeStockageRepository espaceDeStockageRepository = new InMemoryEspaceDeStockageRepository(); 
+	EspaceDeStockageRepository stockageRepositoryBasique = new InMemoryEspaceDeStockageRepository(); 
+	EspaceDeStockageRepository stockageRepositoryOptimise = new InMemoryEspaceDeStockageRepository(); 
 	
 	@Test
 	public void testEmballageOptimiseEstMeilleQueEmballageBasique() {
-		espaceDeStockageRepository.saveEspaceDeStockage(new EspaceDeStockage());
+		stockageRepositoryBasique.saveEspaceDeStockage(new EspaceDeStockage());
+		stockageRepositoryOptimise.saveEspaceDeStockage(new EspaceDeStockage());
 		
-		EmballageService basiqueEmballageService = new BasiqueEmballageService(espaceDeStockageRepository);
-		EmballageService optimiseEmballageService = new OptimiseEmballageService(espaceDeStockageRepository);
+		EmballageService basiqueEmballageService = new BasiqueEmballageService(stockageRepositoryBasique);
+		EmballageService optimiseEmballageService = new OptimiseEmballageService(stockageRepositoryOptimise);
 		
 		final Article[] articles = transformChaineDeChiffresEnChaineDArticles("163841689525773");
 		
@@ -42,9 +44,9 @@ public class OptimiseEmballageServiceTest {
 	}
 	@Test
 	public void testEmballeoptimise() {
-		espaceDeStockageRepository.saveEspaceDeStockage(new EspaceDeStockage());
+		stockageRepositoryOptimise.saveEspaceDeStockage(new EspaceDeStockage());
 		
-		EmballageService optimiseEmballageService = new OptimiseEmballageService(espaceDeStockageRepository);
+		EmballageService optimiseEmballageService = new OptimiseEmballageService(stockageRepositoryOptimise);
 		
 		final Article[] articles = transformChaineDeChiffresEnChaineDArticles("163841689525773");
 		
