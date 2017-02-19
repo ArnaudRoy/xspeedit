@@ -1,8 +1,7 @@
 package fr.aroy.xspeedit.application;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.StringJoiner;
 import java.util.stream.Stream;
 
 import fr.aroy.xspeedit.domain.Article;
@@ -33,17 +32,18 @@ public class EmballageUtils {
 	 */
 	public static String transformChaineDeCartonsEnChaineDeChiffres(Carton[] chaineDeCartons) {
 		
-		StringBuilder stringBuilder = new StringBuilder();
+		StringJoiner cartonsStringJoiner = new StringJoiner("/");
 		
 		Stream<Carton> cartonStream = Arrays.stream(chaineDeCartons);
 		cartonStream.forEach(carton -> {
-			carton.getArticles().forEach(article -> {
-				stringBuilder.append(article.getTaille());
-			});
-			stringBuilder.append("/");
+			StringJoiner articleStringJoiner = new StringJoiner("");
+			carton.getArticles()
+				.forEach(article -> 
+					articleStringJoiner.add(Integer.toString(article.getTaille())));
+			cartonsStringJoiner.merge(articleStringJoiner);
 		}
 		);
-		return stringBuilder.toString();
+		return cartonsStringJoiner.toString();
 	}
 
 }
