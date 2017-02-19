@@ -4,19 +4,20 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.arrayWithSize;
 import static org.hamcrest.Matchers.equalTo;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import fr.aroy.xspeedit.domain.Article;
 import fr.aroy.xspeedit.domain.Carton;
-import fr.aroy.xspeedit.service.EmballageBasique;
+import fr.aroy.xspeedit.service.EmballageServiceBasique;
 import fr.aroy.xspeedit.service.EmballageService;
 import fr.aroy.xspeedit.service.EmballageUtils;
 
 public class EmballageServiceTest {
 
-	@Test
+	@Test @Ignore
 	public void test() {
-		EmballageService emballageService = new EmballageBasique();
+		EmballageService emballageService = new EmballageServiceBasique();
 		
 		Article[] articles = EmballageUtils.transformChaineDeChiffresEnChaineDArticles("163841689525773");
 		
