@@ -22,7 +22,7 @@ public class BasiqueEmballageServiceTest {
 	
 	@Test
 	public void test() {
-		espaceDeStockageRepository.setEspaceDeStockage(new EspaceDeStockage());
+		espaceDeStockageRepository.saveEspaceDeStockage(new EspaceDeStockage());
 		
 		EmballageService emballageService = new BasiqueEmballageService(espaceDeStockageRepository);
 		

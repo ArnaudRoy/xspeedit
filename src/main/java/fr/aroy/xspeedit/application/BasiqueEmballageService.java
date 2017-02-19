@@ -20,7 +20,7 @@ public class BasiqueEmballageService implements EmballageService {
 	
 	@Override
 	public void emballer(Article[] chaineDArticles) {
-		EspaceDeStockage espaceDeStockage = espaceDeStockageRepository.getEspaceDeStockage();
+		EspaceDeStockage espaceDeStockage = espaceDeStockageRepository.loadEspaceDeStockage();
 		
 		Carton carton;
 		
@@ -42,7 +42,7 @@ public class BasiqueEmballageService implements EmballageService {
 
 	@Override
 	public Carton[] getCartonsALivrer() {
-		EspaceDeStockage espaceDeStockage = espaceDeStockageRepository.getEspaceDeStockage();
+		EspaceDeStockage espaceDeStockage = espaceDeStockageRepository.loadEspaceDeStockage();
 		return espaceDeStockage.getChaineDeCartons().stream().toArray(size -> new Carton[size]);
 	}
 	

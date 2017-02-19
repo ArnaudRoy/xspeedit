@@ -13,12 +13,12 @@ public class InMemoryEspaceDeStockageRepository implements EspaceDeStockageRepos
 	private static EspaceDeStockage espaceDeStockage;
 	
 	@Override
-	public EspaceDeStockage getEspaceDeStockage() {
+	public EspaceDeStockage loadEspaceDeStockage() {
 		return InMemoryEspaceDeStockageRepository.espaceDeStockage;
 	}
 	
 	@Override
-	public void setEspaceDeStockage(EspaceDeStockage espaceDeStockage) {
+	public void saveEspaceDeStockage(EspaceDeStockage espaceDeStockage) {
 		InMemoryEspaceDeStockageRepository.espaceDeStockage = espaceDeStockage;
 	}
 

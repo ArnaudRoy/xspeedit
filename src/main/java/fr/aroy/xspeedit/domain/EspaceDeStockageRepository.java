@@ -11,11 +11,11 @@ public interface EspaceDeStockageRepository {
 	 * Recupere l'espace de stockage
 	 * @return EspaceDeStockage
 	 */
-	EspaceDeStockage getEspaceDeStockage();
+	EspaceDeStockage loadEspaceDeStockage();
 	
 	/**
 	 * Enregistrer l'espace de stockage
 	 * @param espaceDeStockage
 	 */
-	void setEspaceDeStockage(EspaceDeStockage espaceDeStockage);
+	void saveEspaceDeStockage(EspaceDeStockage espaceDeStockage);
 }

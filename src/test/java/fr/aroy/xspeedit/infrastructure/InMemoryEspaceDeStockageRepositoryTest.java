@@ -17,9 +17,9 @@ public class InMemoryEspaceDeStockageRepositoryTest {
 		
 		EspaceDeStockage espaceDeStockage = new EspaceDeStockage();
 		
-		stockageRepository.setEspaceDeStockage(espaceDeStockage);
+		stockageRepository.saveEspaceDeStockage(espaceDeStockage);
 		
-		EspaceDeStockage espaceDeStockageFromRepository = stockageRepository.getEspaceDeStockage();
+		EspaceDeStockage espaceDeStockageFromRepository = stockageRepository.loadEspaceDeStockage();
 		
 		assertThat(espaceDeStockage, equalTo(espaceDeStockageFromRepository));
 		
