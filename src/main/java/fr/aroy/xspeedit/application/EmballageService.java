@@ -1,8 +1,11 @@
 package fr.aroy.xspeedit.application;
 
+import java.util.List;
+
 import fr.aroy.xspeedit.domain.Article;
 import fr.aroy.xspeedit.domain.Carton;
 import fr.aroy.xspeedit.domain.EspaceDeStockageRepository;
+import fr.aroy.xspeedit.domain.Livraison;
 
 /**
  * Service d'emballage d'articles dans des cartons
@@ -18,10 +21,16 @@ public interface EmballageService {
 	void emballer(Article[] chaineDArticle);
 
 	/**
-	 * Retourne les cartons à livrer
+	 * Retourne les cartons de l'espace de stockage
 	 * @return Carton[] cartons a livrer
 	 */
-	Carton[] getCartonsALivrer();
+	Carton[] getCartonsEnStock();
+	
+	/**
+	 * Retourne les livraison
+	 * @return List<Livraison> livraisons
+	 */
+	List<Livraison> getLivraison();
 
 	/**
 	 * Setter du repo

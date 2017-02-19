@@ -21,6 +21,7 @@ public class CartonTest {
 		carton.addArticle(new Article(1));
 		
 		assertThat(carton.getCapaciteRestante(), equalTo(6));
+		assertThat(carton.getTauxDeRemplissage(), equalTo(0.4));
 	}
 	@Test
 	public void testCalculCapaciteRestanteAZero() {
@@ -29,6 +30,9 @@ public class CartonTest {
 		carton.addArticle(new Article(1));
 		
 		assertThat(carton.getCapaciteRestante(), equalTo(0));
+		assertThat(carton.getTauxDeRemplissage(), equalTo(1.0));
 	}
+	
+	
 
 }

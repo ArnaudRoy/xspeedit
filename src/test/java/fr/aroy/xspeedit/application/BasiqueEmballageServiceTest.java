@@ -20,14 +20,14 @@ public class BasiqueEmballageServiceTest {
 	
 	@Test
 	public void test() {
-		espaceDeStockageRepository.saveEspaceDeStockage(new EspaceDeStockage());
+		espaceDeStockageRepository.saveEspaceDeStockage(new EspaceDeStockage(100));
 		
 		EmballageService emballageService = new BasiqueEmballageService(espaceDeStockageRepository);
 		
 		Article[] articles = EmballageUtils.transformChaineDeChiffresEnChaineDArticles("163841689525773");
 		
 		emballageService.emballer(articles);
-		Carton[] cartonsALivrer= emballageService.getCartonsALivrer();
+		Carton[] cartonsALivrer= emballageService.getCartonsEnStock();
 
 		assertThat(cartonsALivrer, arrayWithSize(equalTo(10)));
 		

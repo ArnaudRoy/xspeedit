@@ -1,12 +1,14 @@
 package fr.aroy.xspeedit.application;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Stream;
 
 import fr.aroy.xspeedit.domain.Article;
 import fr.aroy.xspeedit.domain.Carton;
 import fr.aroy.xspeedit.domain.EspaceDeStockage;
 import fr.aroy.xspeedit.domain.EspaceDeStockageRepository;
+import fr.aroy.xspeedit.domain.Livraison;
 
 /**
  * Implémentation optimisée du service d'emballage
@@ -60,7 +62,7 @@ public class Optimise3EmballageService implements EmballageService {
 	}
 
 	@Override
-	public Carton[] getCartonsALivrer() {
+	public Carton[] getCartonsEnStock() {
 		EspaceDeStockage espaceDeStockage = espaceDeStockageRepository.loadEspaceDeStockage();
 		return espaceDeStockage.stream().toArray(size -> new Carton[size]);
 	}
@@ -71,6 +73,11 @@ public class Optimise3EmballageService implements EmballageService {
 	 */
 	public void setEspaceDeStockageRepository(EspaceDeStockageRepository espaceDeStockageRepository) {
 		this.espaceDeStockageRepository = espaceDeStockageRepository;
+	}
+	
+	@Override
+	public List<Livraison> getLivraison() {
+		return this.espaceDeStockageRepository.loadEspaceDeStockage().getLivraisons();
 	}
 
 }

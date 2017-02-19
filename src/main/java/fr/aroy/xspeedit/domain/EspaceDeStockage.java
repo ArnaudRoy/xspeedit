@@ -17,7 +17,7 @@ import java.util.List;
 public class EspaceDeStockage implements Collection<Carton> {
 
 	/** Nombre maximum de cartons dans l'espace avant une livraison */
-	public final static int TAILLE_DE_LESPACE = 10;
+	public final int tailleDeLEspace;
 	
 	/** Cartons stockés */
 	private Collection<Carton> chaineDeCartons;
@@ -28,9 +28,19 @@ public class EspaceDeStockage implements Collection<Carton> {
 	/**
 	 * Constructeur
 	 */
-	public EspaceDeStockage() {
+	public EspaceDeStockage(int tailleDeLEspace) {
 		super();
+		this.tailleDeLEspace = tailleDeLEspace;
 		chaineDeCartons = new ArrayList<>();
+		livraisons = new ArrayList<>();
+	}
+	
+	/**
+	 * Getter des livraisons
+	 * @return List<Livraison>
+	 */
+	public List<Livraison> getLivraisons() {
+		return livraisons;
 	}
 	
 	/**
@@ -45,6 +55,10 @@ public class EspaceDeStockage implements Collection<Carton> {
 	 * @param carton a ajouter
 	 */
 	public boolean add(Carton carton) {
+		if (chaineDeCartons.size() >= tailleDeLEspace) {
+			livraisons.add(new Livraison(chaineDeCartons.toArray(new Carton[chaineDeCartons.size()])));
+			chaineDeCartons.clear();
+		}
 		return chaineDeCartons.add(carton);
 	}
 

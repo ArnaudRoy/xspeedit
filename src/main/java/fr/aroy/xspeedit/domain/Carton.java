@@ -1,6 +1,7 @@
 package fr.aroy.xspeedit.domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.StringJoiner;
 
@@ -17,6 +18,18 @@ public class Carton {
 
 	/** Articles contenus dans le carton*/
 	List<Article> articles = new ArrayList<>();
+	
+	/** Constructeur */
+	public Carton() {
+		super();
+	}
+	
+
+	/** Constructeur avec des articles*/
+	public Carton(Article[] articles) {
+		super();
+		this.articles = Arrays.asList(articles);
+	}
 	
 	/**
 	 * @return les articles du carton
@@ -44,6 +57,19 @@ public class Carton {
 				.mapToInt(Integer::intValue)
 				.sum();
 		return CAPACITE_MAX - tailleOccupee;
+	}
+	
+	/**
+	 * Calcule le taux de remplissage du carton
+	 * @return le taux de remplissage
+	 */
+	public Double getTauxDeRemplissage() {
+
+		int tailleOccupee = articles.stream()
+				.map(Article::getTaille)
+				.mapToInt(Integer::intValue)
+				.sum();
+		return tailleOccupee / (double) CAPACITE_MAX;
 	}
 	
 	@Override

@@ -49,7 +49,7 @@ public class Optimise3EmballageServiceTest {
 	
 	@Test
 	public void testEmballeOptimise2() {
-		stockageRepository.saveEspaceDeStockage(new EspaceDeStockage());
+		stockageRepository.saveEspaceDeStockage(new EspaceDeStockage(100));
 
 		EmballageService optimiseEmballageService = new Optimise3EmballageService(stockageRepository);
 
@@ -57,7 +57,7 @@ public class Optimise3EmballageServiceTest {
 
 		optimiseEmballageService.emballer(articles);
 
-		Carton[] cartonsALivrer = optimiseEmballageService.getCartonsALivrer();
+		Carton[] cartonsALivrer = optimiseEmballageService.getCartonsEnStock();
 
 		assertThat(cartonsALivrer, arrayWithSize(equalTo(nombreDeCartons)));
 

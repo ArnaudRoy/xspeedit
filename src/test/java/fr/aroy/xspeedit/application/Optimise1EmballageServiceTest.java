@@ -22,8 +22,8 @@ public class Optimise1EmballageServiceTest {
 	
 	@Test
 	public void testEmballageOptimiseEstMeilleQueEmballageBasique() {
-		stockageRepositoryBasique.saveEspaceDeStockage(new EspaceDeStockage());
-		stockageRepositoryOptimise.saveEspaceDeStockage(new EspaceDeStockage());
+		stockageRepositoryBasique.saveEspaceDeStockage(new EspaceDeStockage(100));
+		stockageRepositoryOptimise.saveEspaceDeStockage(new EspaceDeStockage(100));
 		
 		EmballageService basiqueEmballageService = new BasiqueEmballageService(stockageRepositoryBasique);
 		EmballageService optimiseEmballageService = new OptimiseEmballageService(stockageRepositoryOptimise);
@@ -33,15 +33,15 @@ public class Optimise1EmballageServiceTest {
 		basiqueEmballageService.emballer(articles);
 		optimiseEmballageService.emballer(articles);
 
-		Carton[] cartonsALivrer = basiqueEmballageService.getCartonsALivrer();
-		Carton[] cartonsALivrerOpitimise= optimiseEmballageService.getCartonsALivrer();
+		Carton[] cartonsALivrer = basiqueEmballageService.getCartonsEnStock();
+		Carton[] cartonsALivrerOpitimise= optimiseEmballageService.getCartonsEnStock();
 
 		assertThat(cartonsALivrerOpitimise.length, lessThan(cartonsALivrer.length));
 	}
 
 	@Test
 	public void testEmballeOptimise() {
-		stockageRepositoryOptimise.saveEspaceDeStockage(new EspaceDeStockage());
+		stockageRepositoryOptimise.saveEspaceDeStockage(new EspaceDeStockage(100));
 		
 		EmballageService optimiseEmballageService = new OptimiseEmballageService(stockageRepositoryOptimise);
 		
@@ -49,7 +49,7 @@ public class Optimise1EmballageServiceTest {
 		
 		optimiseEmballageService.emballer(articles);
 		
-		Carton[] cartonsALivrer = optimiseEmballageService.getCartonsALivrer();
+		Carton[] cartonsALivrer = optimiseEmballageService.getCartonsEnStock();
 		
 		assertThat(cartonsALivrer, arrayWithSize(equalTo(8)));
 		

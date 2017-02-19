@@ -14,7 +14,7 @@ public class InMemoryEspaceDeStockageRepositoryTest {
 	public void test() {
 		EspaceDeStockageRepository stockageRepository = new InMemoryEspaceDeStockageRepository();
 		
-		EspaceDeStockage espaceDeStockage = new EspaceDeStockage();
+		EspaceDeStockage espaceDeStockage = new EspaceDeStockage(10);
 		
 		stockageRepository.saveEspaceDeStockage(espaceDeStockage);
 		

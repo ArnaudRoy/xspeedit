@@ -62,13 +62,13 @@ public class EmballageServiceComparaisonTest {
 	
 	private Carton[] testService(EmballageService emballageService, final Article[] articles) {
 		EspaceDeStockageRepository stockageRepository = new InMemoryEspaceDeStockageRepository();
-		stockageRepository.saveEspaceDeStockage(new EspaceDeStockage());
+		stockageRepository.saveEspaceDeStockage(new EspaceDeStockage(100));
 
 		emballageService.setEspaceDeStockageRepository(stockageRepository);
 
 		emballageService.emballer(articles);
 
-		Carton[] cartonsALivrer = emballageService.getCartonsALivrer();
+		Carton[] cartonsALivrer = emballageService.getCartonsEnStock();
 
 		return cartonsALivrer;
 	}
