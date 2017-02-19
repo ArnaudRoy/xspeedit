@@ -1,5 +1,6 @@
 package fr.aroy.xspeedit.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class EspaceDeStockage {
@@ -8,6 +9,7 @@ public class EspaceDeStockage {
 	
 	public EspaceDeStockage() {
 		super();
+		chaineDeCartons = new ArrayList<>();
 	}
 	
 	public void addCarton(Carton carton) {

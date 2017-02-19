@@ -50,6 +50,6 @@ public class EmballageUtilsTest {
 			carton.addArticle(new Article(3));
 		}
 		String chaineDeCartonEnString = EmballageUtils.transformChaineDeCartonsEnChaineDeChiffres(cartons);
-		assertThat(chaineDeCartonEnString, equalTo("123/123/123/123/123/"));
+		assertThat(chaineDeCartonEnString, equalTo("123/123/123/123/123"));
 	}
 }
