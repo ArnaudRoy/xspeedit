@@ -1,5 +1,6 @@
 package fr.aroy.xspeedit.application;
 
+import java.util.Arrays;
 import java.util.List;
 
 import fr.aroy.xspeedit.domain.Article;
@@ -9,22 +10,23 @@ import fr.aroy.xspeedit.domain.EspaceDeStockageRepository;
 
 /**
  * Implémentation optimisée du service d'emballage
- * Prend les articles les uns après les autres, et verifie chaque carton pour trouver un carton avec de la place.
+ * Prend les articles les uns après les autres, et verifie chaque carton pour trouver un carton avec la capacité egale à l'article,
+ * sinon verifie chaque carton pour trouver un carton avec de la place.
  * Si aucun carton n'a la capacité suffisante, le robot met l'article dans un nouveau carton.
  * @author royar
  *
  */
-public class OptimiseEmballageService implements EmballageService {
+public class Optimise2EmballageService implements EmballageService {
 	
 	/** Repo de l'espace de stockage */
 	EspaceDeStockageRepository espaceDeStockageRepository; 
 
 	/** Constructeur */
-	public OptimiseEmballageService() {
+	public Optimise2EmballageService() {
 	}
 	
 	/** Constructeur avec le repo */
-	public OptimiseEmballageService(EspaceDeStockageRepository espaceDeStockageRepository) {
+	public Optimise2EmballageService(EspaceDeStockageRepository espaceDeStockageRepository) {
 		this.espaceDeStockageRepository = espaceDeStockageRepository;
 	}
 	
@@ -38,13 +40,22 @@ public class OptimiseEmballageService implements EmballageService {
 			chaineDeCartons.add(new Carton());
 		}
 		
-		for (Article article : chaineDArticles) {
+		Arrays.stream(chaineDArticles).forEachOrdered(article -> {
 			boolean isArticleEmballe = false;
 			for (Carton carton : chaineDeCartons) {
-				if (carton.getCapaciteRestante() >= article.getTaille()) {
+				if (carton.getCapaciteRestante() == article.getTaille()) {
 					carton.addArticle(article);
 					isArticleEmballe = true;
 					break;
+				}
+			}
+			if (!isArticleEmballe) {
+				for (Carton carton : chaineDeCartons) {
+					if (carton.getCapaciteRestante() >= article.getTaille()) {
+						carton.addArticle(article);
+						isArticleEmballe = true;
+						break;
+					}
 				}
 			}
 			if (!isArticleEmballe) {
@@ -52,7 +63,7 @@ public class OptimiseEmballageService implements EmballageService {
 				chaineDeCartons.add(carton);
 				carton.addArticle(article);
 			}
-		}
+		});
 	}
 
 	@Override

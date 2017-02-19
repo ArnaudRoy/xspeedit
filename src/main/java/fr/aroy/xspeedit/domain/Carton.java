@@ -2,6 +2,7 @@ package fr.aroy.xspeedit.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringJoiner;
 
 /**
  * Entité Carton.
@@ -43,5 +44,21 @@ public class Carton {
 				.mapToInt(Integer::intValue)
 				.sum();
 		return CAPACITE_MAX - tailleOccupee;
+	}
+	
+	@Override
+	public String toString() {
+		StringJoiner sj = new StringJoiner("")
+				.add(Class.class.getSimpleName())
+				.add("[")
+				.add("articles=");
+		
+		StringJoiner articlesSJ = new StringJoiner(",");
+		this.articles.stream().forEach(article -> 
+			articlesSJ.add(Integer.toString(article.getTaille())));
+		
+		sj.merge(articlesSJ);
+		sj.add("]");
+		return sj.toString();
 	}
 }

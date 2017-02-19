@@ -1,5 +1,7 @@
 package fr.aroy.xspeedit.application;
 
+import static fr.aroy.xspeedit.application.EmballageUtils.transformChaineDeCartonsEnChaineDeChiffres;
+import static fr.aroy.xspeedit.application.EmballageUtils.transformChaineDeCartonsEnChaineDeChiffresFlat;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.arrayWithSize;
 import static org.hamcrest.Matchers.equalTo;
@@ -29,8 +31,11 @@ public class BasiqueEmballageServiceTest {
 
 		assertThat(cartonsALivrer, arrayWithSize(equalTo(10)));
 		
-		String chaineDeCartonEnString = EmballageUtils.transformChaineDeCartonsEnChaineDeChiffres(cartonsALivrer);
+		String chaineDeCartonEnString = transformChaineDeCartonsEnChaineDeChiffres(cartonsALivrer);
 		assertThat(chaineDeCartonEnString, equalTo("163/8/41/6/8/9/52/5/7/73"));
+
+		String chaineDeCartonFlatEnString = transformChaineDeCartonsEnChaineDeChiffresFlat(cartonsALivrer);
+		assertThat(chaineDeCartonFlatEnString, equalTo("163841689525773"));
 	}
 
 }

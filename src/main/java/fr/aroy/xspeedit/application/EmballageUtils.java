@@ -50,5 +50,22 @@ public class EmballageUtils {
 		);
 		return cartonsStringJoiner.toString();
 	}
+	/**
+	 * Transforme une chaine de cartons en chaine de chiffres 
+	 * @param chaineDeCartons
+	 * @return une chaine de cartons sous forme d'un string
+	 */
+	public static String transformChaineDeCartonsEnChaineDeChiffresFlat(Carton[] chaineDeCartons) {
+		
+		StringJoiner cartonsStringJoiner = new StringJoiner("");
+		
+		Stream<Carton> cartonStream = Arrays.stream(chaineDeCartons);
+		cartonStream.forEach(carton -> {
+			carton.getArticles()
+			.forEach(article -> 
+			cartonsStringJoiner.add(Integer.toString(article.getTaille())));
+		});
+		return cartonsStringJoiner.toString();
+	}
 
 }
