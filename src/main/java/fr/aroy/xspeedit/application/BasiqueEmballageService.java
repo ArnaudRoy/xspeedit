@@ -7,14 +7,14 @@ import fr.aroy.xspeedit.domain.Carton;
 import fr.aroy.xspeedit.domain.EspaceDeStockage;
 import fr.aroy.xspeedit.domain.EspaceDeStockageRepository;
 
-public class EmballageServiceBasique implements EmballageService {
+public class BasiqueEmballageService implements EmballageService {
 	
 	EspaceDeStockageRepository espaceDeStockageRepository; 
 
-	public EmballageServiceBasique() {
+	public BasiqueEmballageService() {
 	}
 	
-	public EmballageServiceBasique(EspaceDeStockageRepository espaceDeStockageRepository) {
+	public BasiqueEmballageService(EspaceDeStockageRepository espaceDeStockageRepository) {
 		this.espaceDeStockageRepository = espaceDeStockageRepository;
 	}
 	

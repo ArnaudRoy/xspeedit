@@ -8,7 +8,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import fr.aroy.xspeedit.application.EmballageService;
-import fr.aroy.xspeedit.application.EmballageServiceBasique;
+import fr.aroy.xspeedit.application.BasiqueEmballageService;
 import fr.aroy.xspeedit.application.EmballageUtils;
 import fr.aroy.xspeedit.domain.Article;
 import fr.aroy.xspeedit.domain.Carton;
@@ -24,7 +24,7 @@ public class EmballageServiceTest {
 	public void test() {
 		espaceDeStockageRepository.setEspaceDeStockage(new EspaceDeStockage());
 		
-		EmballageService emballageService = new EmballageServiceBasique(espaceDeStockageRepository);
+		EmballageService emballageService = new BasiqueEmballageService(espaceDeStockageRepository);
 		
 		Article[] articles = EmballageUtils.transformChaineDeChiffresEnChaineDArticles("163841689525773");
 		
