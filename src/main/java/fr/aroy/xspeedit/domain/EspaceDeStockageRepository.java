@@ -1,5 +1,13 @@
 package fr.aroy.xspeedit.domain;
 
-public interface CartonRepository {
+/**
+ * Interface du reposiotry de l'EspaceDeStockage
+ * @author royar
+ *
+ */
+public interface EspaceDeStockageRepository {
 
+	EspaceDeStockage getEspaceDeStockage();
+	
+	void setEspaceDeStockage(EspaceDeStockage espaceDeStockage);
 }
