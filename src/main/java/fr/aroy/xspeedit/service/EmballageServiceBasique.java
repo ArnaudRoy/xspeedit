@@ -22,7 +22,7 @@ public class EmballageServiceBasique implements EmballageService {
 		
 		Carton carton = new Carton();
 		for (Article article : chaineDArticles) {
-			if (carton.)
+			// TODO
 		}
 	}
 
