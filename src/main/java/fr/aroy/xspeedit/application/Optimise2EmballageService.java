@@ -1,7 +1,6 @@
 package fr.aroy.xspeedit.application;
 
 import java.util.Arrays;
-import java.util.List;
 
 import fr.aroy.xspeedit.domain.Article;
 import fr.aroy.xspeedit.domain.Carton;
@@ -35,14 +34,13 @@ public class Optimise2EmballageService implements EmballageService {
 	public void emballer(Article[] chaineDArticles) {
 		EspaceDeStockage espaceDeStockage = espaceDeStockageRepository.loadEspaceDeStockage();
 		
-		List<Carton> chaineDeCartons = espaceDeStockage.getChaineDeCartons();
-		if (chaineDeCartons.size() == 0) {
-			chaineDeCartons.add(new Carton());
+		if (espaceDeStockage.size() == 0) {
+			espaceDeStockage.add(new Carton());
 		}
 		
 		Arrays.stream(chaineDArticles).forEachOrdered(article -> {
 			boolean isArticleEmballe = false;
-			for (Carton carton : chaineDeCartons) {
+			for (Carton carton : espaceDeStockage) {
 				if (carton.getCapaciteRestante() == article.getTaille()) {
 					carton.addArticle(article);
 					isArticleEmballe = true;
@@ -50,7 +48,7 @@ public class Optimise2EmballageService implements EmballageService {
 				}
 			}
 			if (!isArticleEmballe) {
-				for (Carton carton : chaineDeCartons) {
+				for (Carton carton : espaceDeStockage) {
 					if (carton.getCapaciteRestante() >= article.getTaille()) {
 						carton.addArticle(article);
 						isArticleEmballe = true;
@@ -60,7 +58,7 @@ public class Optimise2EmballageService implements EmballageService {
 			}
 			if (!isArticleEmballe) {
 				Carton carton = new Carton();
-				chaineDeCartons.add(carton);
+				espaceDeStockage.add(carton);
 				carton.addArticle(article);
 			}
 		});
@@ -69,7 +67,7 @@ public class Optimise2EmballageService implements EmballageService {
 	@Override
 	public Carton[] getCartonsALivrer() {
 		EspaceDeStockage espaceDeStockage = espaceDeStockageRepository.loadEspaceDeStockage();
-		return espaceDeStockage.getChaineDeCartons().stream().toArray(size -> new Carton[size]);
+		return espaceDeStockage.stream().toArray(size -> new Carton[size]);
 	}
 	
 	/**

@@ -1,7 +1,5 @@
 package fr.aroy.xspeedit.application;
 
-import java.util.List;
-
 import fr.aroy.xspeedit.domain.Article;
 import fr.aroy.xspeedit.domain.Carton;
 import fr.aroy.xspeedit.domain.EspaceDeStockage;
@@ -34,17 +32,17 @@ public class BasiqueEmballageService implements EmballageService {
 		
 		Carton carton;
 		
-		List<Carton> chaineDeCartons = espaceDeStockage.getChaineDeCartons();
-		if (chaineDeCartons.size() > 0) {
-			carton = chaineDeCartons.get(chaineDeCartons.size() - 1);
+//		List<Carton> chaineDeCartons = espaceDeStockage.getChaineDeCartons();
+		if (espaceDeStockage.size() > 0) {
+			carton = espaceDeStockage.iterator().next();
 		} else {
 			carton = new Carton();
-			chaineDeCartons.add(carton);
+			espaceDeStockage.add(carton);
 		}
 		for (Article article : chaineDArticles) {
 			if (carton.getCapaciteRestante() < article.getTaille()) {
 				carton = new Carton();
-				chaineDeCartons.add(carton);
+				espaceDeStockage.add(carton);
 			}
 			carton.addArticle(article);
 		}
@@ -53,7 +51,7 @@ public class BasiqueEmballageService implements EmballageService {
 	@Override
 	public Carton[] getCartonsALivrer() {
 		EspaceDeStockage espaceDeStockage = espaceDeStockageRepository.loadEspaceDeStockage();
-		return espaceDeStockage.getChaineDeCartons().stream().toArray(size -> new Carton[size]);
+		return espaceDeStockage.stream().toArray(size -> new Carton[size]);
 	}
 	
 	/**
