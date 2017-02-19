@@ -7,7 +7,6 @@ import static org.hamcrest.Matchers.arrayWithSize;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.lessThan;
 
-import org.hamcrest.Matchers;
 import org.junit.Test;
 
 import fr.aroy.xspeedit.domain.Article;
@@ -34,16 +33,14 @@ public class OptimiseEmballageServiceTest {
 		basiqueEmballageService.emballer(articles);
 		optimiseEmballageService.emballer(articles);
 
-		Carton[] cartonsALivrer= basiqueEmballageService.getCartonsALivrer();
+		Carton[] cartonsALivrer = basiqueEmballageService.getCartonsALivrer();
 		Carton[] cartonsALivrerOpitimise= optimiseEmballageService.getCartonsALivrer();
 
 		assertThat(cartonsALivrerOpitimise.length, lessThan(cartonsALivrer.length));
-		
-		String chaineDeCartonEnString = transformChaineDeCartonsEnChaineDeChiffres(cartonsALivrer);
-		assertThat(chaineDeCartonEnString, equalTo("163/8/41/6/8/9/52/5/7/73"));
 	}
+
 	@Test
-	public void testEmballeoptimise() {
+	public void testEmballeOptimise() {
 		stockageRepositoryOptimise.saveEspaceDeStockage(new EspaceDeStockage());
 		
 		EmballageService optimiseEmballageService = new OptimiseEmballageService(stockageRepositoryOptimise);
@@ -54,10 +51,10 @@ public class OptimiseEmballageServiceTest {
 		
 		Carton[] cartonsALivrer = optimiseEmballageService.getCartonsALivrer();
 		
-		assertThat(cartonsALivrer, arrayWithSize(equalTo(10)));
+		assertThat(cartonsALivrer, arrayWithSize(equalTo(8)));
 		
 		String chaineDeCartonEnString = transformChaineDeCartonsEnChaineDeChiffres(cartonsALivrer);
-		assertThat(chaineDeCartonEnString, equalTo("163/82/46/19/8/55/73/7"));
+		assertThat(chaineDeCartonEnString, equalTo("163/81/46/82/9/55/73/7"));
 	}
 
 }
