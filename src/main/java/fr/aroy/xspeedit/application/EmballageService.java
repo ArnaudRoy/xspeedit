@@ -2,6 +2,7 @@ package fr.aroy.xspeedit.application;
 
 import fr.aroy.xspeedit.domain.Article;
 import fr.aroy.xspeedit.domain.Carton;
+import fr.aroy.xspeedit.domain.EspaceDeStockageRepository;
 
 /**
  * Service d'emballage d'articles dans des cartons
@@ -21,5 +22,11 @@ public interface EmballageService {
 	 * @return Carton[] cartons a livrer
 	 */
 	Carton[] getCartonsALivrer();
+
+	/**
+	 * Setter du repo
+	 * @param espaceDeStockageRepository
+	 */
+	void setEspaceDeStockageRepository(EspaceDeStockageRepository espaceDeStockageRepository);
 
 }

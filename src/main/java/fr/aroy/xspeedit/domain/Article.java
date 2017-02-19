@@ -1,30 +1,33 @@
 package fr.aroy.xspeedit.domain;
 
 import java.util.Objects;
+import java.util.StringJoiner;
 
 /**
  * Value-Object carton
+ * 
  * @author royar
  *
  */
 public class Article {
 
-	/** Taille du carton*/
-	public final int taille;
+	/** Taille du carton */
+	private final int taille;
 
-	/** Constructeur avec la taille du carton*/
+	/** Constructeur avec la taille du carton */
 	public Article(int taille) {
 		this.taille = taille;
 	}
 
 	/**
 	 * Getter sur la taille
+	 * 
 	 * @return la taille de l'article
 	 */
-	public int getTaille() {
+	public Integer getTaille() {
 		return taille;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (obj == null) {
@@ -35,5 +38,15 @@ public class Article {
 		}
 		final Article other = (Article) obj;
 		return Objects.equals(this.taille, other.taille);
+	}
+
+	@Override
+	public String toString() {
+		return new StringJoiner("")
+				.add(Class.class.getSimpleName())
+				.add("[")
+				.add("taille=" + taille)
+				.add("]")
+				.toString();
 	}
 }
