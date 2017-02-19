@@ -1,5 +1,7 @@
 package fr.aroy.xspeedit.application;
 
+import java.util.List;
+
 import fr.aroy.xspeedit.domain.Article;
 import fr.aroy.xspeedit.domain.Carton;
 import fr.aroy.xspeedit.domain.EspaceDeStockage;
@@ -20,16 +22,28 @@ public class EmballageServiceBasique implements EmballageService {
 	public void emballer(Article[] chaineDArticles) {
 		EspaceDeStockage espaceDeStockage = espaceDeStockageRepository.getEspaceDeStockage();
 		
-		Carton carton = new Carton();
+		Carton carton;
+		
+		List<Carton> chaineDeCartons = espaceDeStockage.getChaineDeCartons();
+		if (chaineDeCartons.size() > 0) {
+			carton = chaineDeCartons.get(chaineDeCartons.size() - 1);
+		} else {
+			carton = new Carton();
+			chaineDeCartons.add(carton);
+		}
 		for (Article article : chaineDArticles) {
-//			if (carton.)
+			if (carton.getCapaciteRestante() < article.taille) {
+				carton = new Carton();
+				chaineDeCartons.add(carton);
+			}
+			carton.addArticle(article);
 		}
 	}
 
 	@Override
 	public Carton[] getCartonsALivrer() {
-		// TODO Auto-generated method stub
-		return null;
+		EspaceDeStockage espaceDeStockage = espaceDeStockageRepository.getEspaceDeStockage();
+		return espaceDeStockage.getChaineDeCartons().stream().toArray(size -> new Carton[size]);
 	}
 	
 	public void setEspaceDeStockageRepository(EspaceDeStockageRepository espaceDeStockageRepository) {
