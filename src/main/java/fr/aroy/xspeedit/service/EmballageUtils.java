@@ -1,9 +1,12 @@
 package fr.aroy.xspeedit.service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 import fr.aroy.xspeedit.domain.Article;
+import fr.aroy.xspeedit.domain.Carton;
 
 public class EmballageUtils {
 
@@ -26,6 +29,25 @@ public class EmballageUtils {
 				});
 
 		return chaineDArticles.toArray(new Article[chaineDArticles.size()]);
+	}
+	/**
+	 * Transforme une Chaine de carton en Chaine de chiffres séparés par des "/"
+	 * @param chaineDeCartons
+	 * @return une chaine de cartons sous forme d'un string
+	 */
+	public static String transformChaineDeCartonsEnChaineDeChiffres(Carton[] chaineDeCartons) {
+		
+		StringBuilder stringBuilder = new StringBuilder();
+		
+		Stream<Carton> cartonStream = Arrays.stream(chaineDeCartons);
+		cartonStream.forEach(carton -> {
+			carton.getArticles().forEach(article -> {
+				stringBuilder.append(article.getTaille());
+			});
+			stringBuilder.append("/");
+		}
+		);
+		return stringBuilder.toString();
 	}
 
 }

@@ -10,6 +10,10 @@ public class Article {
 		this.taille = taille;
 	}
 
+	public int getTaille() {
+		return taille;
+	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (obj == null) {

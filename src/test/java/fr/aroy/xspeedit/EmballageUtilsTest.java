@@ -7,6 +7,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import org.junit.Test;
 
 import fr.aroy.xspeedit.domain.Article;
+import fr.aroy.xspeedit.domain.Carton;
 import fr.aroy.xspeedit.service.EmballageUtils;
 
 public class EmballageUtilsTest {
@@ -38,5 +39,17 @@ public class EmballageUtilsTest {
 				equalTo(new Article(3)),
 				equalTo(new Article(4))
 				));		
+	}
+	
+	@Test
+	public void testCartonsToString() {
+		Carton[] cartons = {new Carton(), new Carton(), new Carton(), new Carton(), new Carton()};
+		for (Carton carton : cartons) {
+			carton.addArticle(new Article(1));
+			carton.addArticle(new Article(2));
+			carton.addArticle(new Article(3));
+		}
+		String chaineDeCartonEnString = EmballageUtils.transformChaineDeCartonsEnChaineDeChiffres(cartons);
+		assertThat(chaineDeCartonEnString, equalTo("123/123/123/123/123/"));
 	}
 }
