@@ -1,4 +1,4 @@
-package fr.aroy.xspeedit.service;
+package fr.aroy.xspeedit.application;
 
 import fr.aroy.xspeedit.domain.Article;
 import fr.aroy.xspeedit.domain.Carton;
@@ -22,7 +22,7 @@ public class EmballageServiceBasique implements EmballageService {
 		
 		Carton carton = new Carton();
 		for (Article article : chaineDArticles) {
-			// TODO
+//			if (carton.)
 		}
 	}
 

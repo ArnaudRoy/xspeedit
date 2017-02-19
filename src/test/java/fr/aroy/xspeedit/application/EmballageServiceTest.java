@@ -1,4 +1,4 @@
-package fr.aroy.xspeedit;
+package fr.aroy.xspeedit.application;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.arrayWithSize;
@@ -7,11 +7,11 @@ import static org.hamcrest.Matchers.equalTo;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import fr.aroy.xspeedit.application.EmballageService;
+import fr.aroy.xspeedit.application.EmballageServiceBasique;
+import fr.aroy.xspeedit.application.EmballageUtils;
 import fr.aroy.xspeedit.domain.Article;
 import fr.aroy.xspeedit.domain.Carton;
-import fr.aroy.xspeedit.service.EmballageServiceBasique;
-import fr.aroy.xspeedit.service.EmballageService;
-import fr.aroy.xspeedit.service.EmballageUtils;
 
 public class EmballageServiceTest {
 

@@ -1,4 +1,4 @@
-package fr.aroy.xspeedit.service;
+package fr.aroy.xspeedit.application;
 
 import java.util.ArrayList;
 import java.util.Arrays;

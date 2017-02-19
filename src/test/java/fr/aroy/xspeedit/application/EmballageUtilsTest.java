@@ -1,4 +1,4 @@
-package fr.aroy.xspeedit;
+package fr.aroy.xspeedit.application;
 
 import static org.junit.Assert.*;
 import static org.hamcrest.Matchers.*;
@@ -6,9 +6,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 import org.junit.Test;
 
+import fr.aroy.xspeedit.application.EmballageUtils;
 import fr.aroy.xspeedit.domain.Article;
 import fr.aroy.xspeedit.domain.Carton;
-import fr.aroy.xspeedit.service.EmballageUtils;
 
 public class EmballageUtilsTest {
 

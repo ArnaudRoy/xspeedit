@@ -1,4 +1,4 @@
-package fr.aroy.xspeedit.service;
+package fr.aroy.xspeedit.application;
 
 import fr.aroy.xspeedit.domain.Article;
 import fr.aroy.xspeedit.domain.Carton;

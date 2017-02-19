@@ -1,4 +1,4 @@
-package fr.aroy.xspeedit;
+package fr.aroy.xspeedit.domain;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.arrayWithSize;
