@@ -1,16 +1,17 @@
 package fr.aroy.xspeedit.domain;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.arrayWithSize;
 import static org.hamcrest.Matchers.equalTo;
 
 import org.junit.Test;
 
-import fr.aroy.xspeedit.domain.Article;
-import fr.aroy.xspeedit.domain.Carton;
-
 public class CartonTest {
 
+	@Test
+	public void testCalculCapaciteRestanteSurCartonVide() {
+		Carton carton = new Carton();
+		assertThat(carton.getCapaciteRestante(), equalTo(Carton.CAPACITE_MAX));
+	}
 	@Test
 	public void testCalculCapaciteRestanteASix() {
 		Carton carton = new Carton();
