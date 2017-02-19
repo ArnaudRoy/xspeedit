@@ -17,4 +17,12 @@ public class Carton {
 	public void addArticle(Article article) {
 		articles.add(article);
 	}
+	
+	public int getCapaciteRestante() {
+		int tailleOccupee = articles.stream()
+				.map(Article::getTaille)
+				.mapToInt(Integer::intValue)
+				.sum();
+		return CAPACITE_MAX - tailleOccupee;
+	}
 }
