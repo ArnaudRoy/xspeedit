@@ -1,10 +1,10 @@
 package fr.aroy.xspeedit.domain;
 
-import java.util.Set;
+import java.util.List;
 
 public class EspaceDeStockage {
 
-	private Set<Carton> chaineDeCartons;
+	private List<Carton> chaineDeCartons;
 	
 	public EspaceDeStockage() {
 		super();
@@ -14,7 +14,7 @@ public class EspaceDeStockage {
 		chaineDeCartons.add(carton);
 	}
 	
-	public Set<Carton> getChaineDeCartons() {
+	public List<Carton> getChaineDeCartons() {
 		return chaineDeCartons;
 	}
 	
