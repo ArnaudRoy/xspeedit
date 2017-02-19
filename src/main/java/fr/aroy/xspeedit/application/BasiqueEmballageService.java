@@ -7,13 +7,23 @@ import fr.aroy.xspeedit.domain.Carton;
 import fr.aroy.xspeedit.domain.EspaceDeStockage;
 import fr.aroy.xspeedit.domain.EspaceDeStockageRepository;
 
+/**
+ * Implémentation basique du service d'emballage
+ * Prend les articles les uns après les autres, et les mets dans un carton.
+ * Si la taille totale dépasse la contenance du carton, le robot met l'article dans le carton suivant.
+ * @author royar
+ *
+ */
 public class BasiqueEmballageService implements EmballageService {
 	
+	/** Repo de l'espace de stockage */
 	EspaceDeStockageRepository espaceDeStockageRepository; 
 
+	/** Constructeur */
 	public BasiqueEmballageService() {
 	}
 	
+	/** Constructeur avec le repo */
 	public BasiqueEmballageService(EspaceDeStockageRepository espaceDeStockageRepository) {
 		this.espaceDeStockageRepository = espaceDeStockageRepository;
 	}
@@ -46,6 +56,10 @@ public class BasiqueEmballageService implements EmballageService {
 		return espaceDeStockage.getChaineDeCartons().stream().toArray(size -> new Carton[size]);
 	}
 	
+	/**
+	 * Setter du repo
+	 * @param espaceDeStockageRepository
+	 */
 	public void setEspaceDeStockageRepository(EspaceDeStockageRepository espaceDeStockageRepository) {
 		this.espaceDeStockageRepository = espaceDeStockageRepository;
 	}
