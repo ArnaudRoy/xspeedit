@@ -4,7 +4,7 @@ import java.util.Set;
 
 public class EspaceDeStockage {
 
-	public Set<Carton> chaineDeCartons;
+	private Set<Carton> chaineDeCartons;
 	
 	public EspaceDeStockage() {
 		super();
